@@ -18,19 +18,21 @@ namespace AdventofCode1_2018
 
         private static void GrabValues()
         {
-
+            int[] frequencyArr = { 0};
             string line;
             int tempVal = 0;
             int total = 0;
+            int listPos = 0;
+
             StreamReader streamReader = new StreamReader(@"C:\Users\David\Desktop\values.txt");
             line = streamReader.ReadLine();
             while (line != null)
             {
-
                 string giveTake = String.Empty;
+                //Give take is the +/- Values of the line in the txt document
                 giveTake = line;
                 Console.WriteLine(giveTake);
-
+                //remove the +/- char and convert the number to int
                 tempVal = Convert.ToInt32(giveTake.Substring(1));
 
                 char plusMinus = giveTake[0];
@@ -47,6 +49,18 @@ namespace AdventofCode1_2018
                 {
                     Console.WriteLine("problem");
                 }
+
+                //for statement to check if there are similar frequencies
+                foreach (int x in frequencyArr) { 
+                   if(frequencyArr[x] == total)
+                    {
+                        Console.WriteLine("The first duplicated frequency is " + total);
+                        Console.ReadKey();
+                    }
+                
+                }
+
+                frequencyArr[listPos] = total;
 
                 Console.WriteLine(total);
                 Console.WriteLine();
